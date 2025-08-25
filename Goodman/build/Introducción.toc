@@ -1,0 +1,4 @@
+\babel@toc {spanish}{}\relax 
+\contentsline {section}{\numberline {1}Introducci\'on}{5}{section.1}%
+\contentsline {subsection}{\numberline {1.1}\'Optica, informaci\'on, y comunicaci\'on}{5}{subsection.1.1}%
+\contentsline {subsection}{\numberline {1.2}El libro}{5}{subsection.1.2}%

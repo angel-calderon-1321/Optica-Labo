@@ -1,0 +1,98 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[latin1]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[spanish]{babel}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage[colorlinks=true, linkcolor=red, citecolor=red, urlcolor=blue]{hyperref}
+\usepackage[total={16cm,24cm},centering]{geometry}
+\parskip= 5mm %espacio entre párrafos
+\usepackage{caption} %caption personalizado
+\date{}
+\author{Goodman}
+\title{Análisis de Señales y Sistemas Bidimensionales}
+
+\begin{document}
+\maketitle
+\newpage
+\tableofcontents
+\newpage
+
+Experimentalmente se ha encontrado que muchos fenómenos físicos comparten la propiedad básica de que su respuesta a varios estímulos que actúan simultáneamente es idénticamente igual a la suma de las respuestas que cada estímulo componente produciría individualmente. Tales fenómenos se llaman lineales; y la propiedad que comparten se llama linealidad. Las redes eléctricas compuestas de resistencias, condensadores e inductores suelen ser lineales en una amplia gama de entradas. Además, como pronto veremos, la ecuación de onda que describe la propagación de la luz a través de la mayoría de los medios nos lleva naturalmente a considerar las operaciones de formación de imágenes ópticas como mapeos lineales de distribuciones de luz de {\em objeto} en distribuciones de luz de {\em imagen}.
+
+La propiedad única de linealidad conduce a una gran simplificación en la descripción matemática de tales fenómenos y representa el fundamento de una estructura matemática a la que nos referiremos aquí como teoría de sistemas lineales. La gran ventaja que ofrece la linealidad es la capacidad de expresar la respuesta (ya sea voltaje, corriente, amplitud de luz o intensidad de luz) a un estímulo complicado en términos de respuestas a ciertos estímulos {\em elementales}. Así, si un estímulo se descompone en una combinación lineal de estímulos elementales, cada uno de los cuales produce una respuesta conocida de forma conveniente, entonces, en virtud de la linealidad, la respuesta total se puede encontrar como una combinación lineal correspondiente de las respuestas a los estímulos elementales.
+
+En este capítulo revisamos algunas de las herramientas matemáticas que son útiles para describir fenómenos lineales y analizamos algunas de las descomposiciones matemáticas que a menudo se emplean en su análisis. A lo largo de los últimos capítulos nos ocuparemos de los estímulos (entradas del sistema) y las respuestas (salidas del sistema) que pueden ser dos cantidades físicas diferentes. Si la iluminación utilizada en un sistema óptico exhibe una propiedad llamada coherencia espacial, encontraremos que es apropiado describir la luz como una distribución espacial de amplitud de campo de valores complejos. Cuando la iluminación carece totalmente de coherencia espacial, es apropiado describir la luz como una distribución espacial de intensidad de valor real. La atención se centrará aquí en el análisis de sistemas lineales con entradas de valores complejos; los resultados de las entradas de valor real se incluyen así como casos especiales de la teoría.
+
+\section{Análisis de Fourier en dos dimensiones}
+
+Una herramienta matemática de gran utilidad en el análisis de fenómenos tanto lineales como no lineales es el análisis de Fourier. Esta herramienta es muy utilizada en el estudio de redes eléctricas y sistemas de comunicación; se supone que el lector se ha encontrado previamente con la teoría de Fourier y, por lo tanto, está familiarizado con el análisis de funciones de una variable independiente (por ejemplo, el tiempo). Para una revisión de los conceptos matemáticos fundamentales, consulte los libros de Papoulis [226], Bracewell [32] y Gray y Goodman [131]. Un tratamiento particularmente relevante es el de Bracewell [33]. Nuestro propósito aquí se limita a extender la familiaridad del lector al análisis de funciones de dos variables independientes. No se intentará un gran rigor matemático, sino que se adoptará un enfoque operativo, característico de la mayoría de los tratamientos de ingeniería del tema.
+
+\subsection{Definición y Condiciones de Existencia}
+
+La transformada de Fourier (alternativamente, el espectro de Fourier o el espectro de frecuencias) de una función $g$ (en general, de valores complejos) de dos variables independientes $x$ e $y$ se representará aquí mediante $F\{g\}$ y se define mediante
+
+\begin{equation}
+F\{g\} = \int^{\infty}\int_{-\infty} g(x,y)e^{-j2\pi(f_x x+f_y y)} dxdy
+\end{equation}
+
+La transformada así definida es en sí misma una función de valor complejo de dos variables independientes $f_x$ y $f_y$, a las que generalmente nos referimos como frecuencias. De manera similar, la transformada inversa de Fourier de una función $G(fx, fy)$ estará representada por $F^{-1}\{G\}$ y se define como
+
+\begin{equation}
+F^{-1}\{G\} =  \int^{\infty}\int_{-\infty} G(f_x,f_y)e^{j2\pi(f_x x+f_y y)} dxdy
+\end{equation}
+
+Tenga en cuenta que, como operaciones matemáticas, la transformada y la transformada inversa son muy similares, solo se diferencian en el signo del exponente que aparece en el integrando. La transformada inversa de Fourier a veces se denomina representación integral de Fourier de una función $g(x, y)$.
+
+Antes de discutir las propiedades de la transformada de Fourier y su inversa, primero debemos decidir cuándo (2-1) y (2-2) son realmente significativos. Para ciertas funciones, estas integrales pueden no existir en el sentido matemático habitual y, por lo tanto, esta discusión estaría incompleta sin al menos una breve mención de las "condiciones de existencia". Si bien es posible una variedad de conjuntos de condiciones suficientes para la existencia de (2-1), quizás el conjunto más común sea el siguiente:
+
+\begin{enumerate}
+\item g debe ser absolutamente integrable sobre el plano infinito (x,y).
+\item  g debe tener solo un número finito de discontinuidades y un número finito de máximos y mínimos en cualquier rectángulo finito.
+\item  g no debe tener discontinuidades infinitas.
+\end{enumerate}
+
+En general, cualquiera de estas condiciones puede debilitarse al precio de fortalecer una o ambas condiciones complementarias, pero tales consideraciones nos llevan bastante lejos de nuestros propósitos aquí.
+
+Como ha señalado Bracewell [32], "la posibilidad física es una condición suficiente válida para la existencia de una transformada". Sin embargo, a menudo es conveniente en el análisis de sistemas representar formas de onda físicas verdaderas mediante funciones matemáticas idealizadas, y tales funciones pueden violar una o más de las condiciones de existencia anteriores. Por ejemplo, es común representar un pulso de tiempo estrecho y fuerte mediante la llamada función delta de Dirac, a menudo representada por
+
+\begin{equation}
+\delta(t)=\lim_{N \rightarrow \infty} Ne^{-N^2\pi t^2}
+\end{equation}
+
+donde la operación de límite proporciona una construcción mental conveniente pero no debe tomarse literalmente. Consulte el Apéndice A para obtener más detalles. De manera similar, una fuente de luz puntual idealizada a menudo se representa mediante el equivalente bidimensional,
+
+\begin{equation}
+\delta(x,y) = \lim_{N \rightarrow \infty} N^2e^{-N^2\pi (x^2+y^2)}
+\end{equation}
+
+Tales "funciones", siendo infinitas en el origen y cero en cualquier otro lugar, tienen una discontinuidad infinita y, por lo tanto, no satisfacen la condición de existencia 3. Otros ejemplos importantes se encuentran fácilmente; por ejemplo, las funciones
+
+\begin{equation}
+f(x,y) = 1 \hspace{1cm} y \hspace{1cm} f(x,y) = cos(2\pi f_x x)
+\end{equation}
+
+ambos no cumplen la condición de existencia 1.
+
+Si la mayoría de las funciones de interés se van a incluir dentro del marco del análisis de Fourier, se requiere cierta generalización de la definición (2-1). Afortunadamente, a menudo es posible encontrar una transformada significativa de funciones que no satisfagan estrictamente las condiciones de existencia, siempre que esas funciones puedan definirse como el límite de una secuencia de funciones que son transformables. Al transformar cada función miembro de la secuencia de definición, se genera una secuencia correspondiente de transformadas, y llamamos al límite de esta nueva secuencia la transformada de Fourier generalizada de la función original. Las transformadas generalizadas se pueden manipular de la misma manera que las transformadas convencionales, y generalmente se puede ignorar la distinción entre los dos casos, entendiéndose que cuando una función no satisface las condiciones de existencia y, sin embargo, se dice que tiene una transformada, entonces la transformada generalizada transform realmente se quiere decir. Para una discusión más detallada de esta generalización del análisis de Fourier, se remite al lector al libro de Lighthill [194].
+
+Para ilustrar el cálculo de una transformada generalizada, considere la función delta de Dirac, que se ha visto que viola la condición de existencia 3. Tenga en cuenta que cada función miembro de la secuencia definitoria (2-4) satisface los requisitos de existencia y que cada una, de hecho , tiene una transformada de Fourier dada por (ver Tabla 2.1)
+
+\begin{equation}
+F\{N^2e^{-N^2 \pi (x^2+y^2)}\} = e^{-{\pi (f_x^2 + f_y^2) \over N^2}}
+\end{equation}
+
+En consecuencia, se encuentra que la transformada generalizada de $\delta(x, y)$ es
+
+\begin{equation}
+F\{\delta(x,y)\} = \lim_{N \rightarrow \infty} \left\{ e^{-{\pi (f_x^2 + f_y^2) \over N^2}} \right\}
+\end{equation}
+
+Tenga en cuenta que el espectro de una función delta se extiende uniformemente en todo el dominio de la frecuencia. Para otros ejemplos de transformadas generalizadas, vea la Tabla 2.1.
+
+
+
+
+\end{document}

@@ -1,0 +1,70 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage[latin1]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[spanish]{babel}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage[colorlinks=true, linkcolor=red, citecolor=red, urlcolor=blue]{hyperref}
+\usepackage[total={16cm,24cm},centering]{geometry}
+\parskip= 5mm %espacio entre párrafos
+\usepackage{caption} %caption personalizado
+\date{}
+\author{Goodman}
+\title{Introducción}
+\begin{document}
+\maketitle
+\newpage
+\tableofcontents
+\newpage
+
+{\Large {\bf Preface}}
+
+El análisis de Fourier es una herramienta omnipresente que ha encontrado aplicación en diversas áreas de la física y la ingeniería. Este libro trata de sus aplicaciones en óptica y, en particular, de las aplicaciones a la difracción, la formación de imágenes, el procesamiento de datos ópticos y la holografía.
+
+Dado que el tema tratado es la Óptica de Fourier, es natural que los métodos de análisis de Fourier desempeñen un papel clave como estructura analítica subyacente de nuestro tratamiento. El análisis de Fourier es una parte estándar de la formación de la mayoría de los físicos e ingenieros. La teoría de los sistemas lineales también es familiar, especialmente para los ingenieros eléctricos. El capítulo 2 repasa los antecedentes matemáticos necesarios. Para aquellos que no estén familiarizados con el análisis de Fourier y la teoría de sistemas lineales, puede servir como esquema para un estudio más detallado que se puede realizar con la ayuda de otros libros de texto explícitamente dirigidos a este tema. Se dan amplias referencias para tratamientos más detallados de este material. Para aquellos que ya conocen el análisis de Fourier y la teoría de sistemas lineales, esa experiencia generalmente ha sido con funciones de una sola variable independiente, a saber, el tiempo. El material presentado en el Capítulo 2 trata de las matemáticas en dos dimensiones espaciales (como es necesario para la mayoría de los problemas de óptica), lo que produce una riqueza adicional que no se encuentra en los tratamientos estándar de la teoría unidimensional.
+
+La edición original de este libro se ha ampliado considerablemente en esta segunda edición, una ampliación que era necesaria debido a la enorme cantidad de progreso en el campo desde 1968 cuando se publicó la primera edición. El libro se puede utilizar como libro de texto para satisfacer las necesidades de varios tipos diferentes de cursos. Está dirigido tanto a físicos como a ingenieros, y las partes del libro utilizadas en el curso variarán en general según la audiencia. Sin embargo, al seleccionar adecuadamente el material que se cubrirá, se pueden satisfacer las necesidades de cualquiera de una serie de audiencias diferentes. Este Prefacio hará varias sugerencias explícitas para dar forma a diferentes tipos de cursos.
+
+Primero, se puede construir un curso de un trimestre o un semestre sobre difracción y formación de imágenes a partir de los materiales tratados en los Capítulos 2 a 6, junto con los tres apéndices. Si el tiempo es corto, las siguientes secciones de estos capítulos pueden omitirse o dejarse como lectura para el estudiante avanzado: 3.8, 3.9, 5.4 y 6.6.
+
+Un segundo tipo de curso de un trimestre o un semestre cubriría los conceptos básicos de la óptica de Fourier, pero luego se centraría en el área de aplicación del procesamiento de señales ópticas analógicas. Para tal curso, recomendaría que el Capítulo 2 se deje a la lectura del estudiante, que el material del Capítulo 3 comience con la Sección 3.7 y siga con la Sección 3.10, dejando el resto de este capítulo a la lectura de esos estudiantes. que sienten curiosidad por los orígenes del principio de Huygens-Fresnel. En el Capítulo 4, se pueden omitir las Secciones 4.2.2 y 4.5.1. El capítulo 5 puede comenzar con la ecuación. (5-10) para la función de transmitancia de amplitud de una lente delgada, y puede incluir todo el material restante, con la excepción de que la Sección 5.4 puede dejarse como lectura para los estudiantes avanzados. Si el tiempo es corto, el Capítulo 6 se puede omitir por completo. Para este curso, prácticamente todo el material presentado en el Capítulo 7 es importante, al igual que gran parte del material del Capítulo 8. Si es necesario reducir la cantidad de material, recomendaría omitir las siguientes secciones: 8.2, 8.8 y 8.9. A menudo es deseable incluir algún subconjunto del material sobre holografía del Capítulo 9 en este curso. Incluiría las secciones 9.4, 9.6.1, 9.6.2, 9.7.1, 9.7.2, 9.8, 9.9 y 9.12.5. Los tres apéndices deben ser leídos por los estudiantes, pero no es necesario que se cubran en las conferencias.
+
+Una tercera variación sería un curso de un trimestre o un semestre que cubra los conceptos básicos de la Óptica de Fourier pero se centre en la holografía como una aplicación. El curso puede comenzar nuevamente con la Sección 3.7 y seguir con la Sección 3.10. La cobertura a través del Capítulo 5 puede ser idéntica a la descrita anteriormente para el curso que enfatiza el procesamiento de señales ópticas. En este caso, se puede incluir el material de las Secciones 6.1, 6.2, 6.3 y 6.5. En el Capítulo 7, solo se necesita la Sección 7.1, aunque la Sección 7.3 es una adición útil si hay tiempo. Ahora se puede omitir el Capítulo 8 y el Capítulo 9 sobre holografía puede ser el centro de atención. Si el tiempo es corto, se pueden omitir las Secciones 9.10 y 9.11. Los dos primeros apéndices deben ser leídos por los estudiantes y el tercero se puede omitir.
+
+En algunas universidades se puede dedicar más de un trimestre o un semestre a este material. En dos trimestres o dos semestres, se puede cubrir la mayor parte del material de este libro.
+
+Por supuesto, las sugerencias anteriores pueden modificarse para satisfacer las necesidades de un conjunto particular de estudiantes o para enfatizar el material que un instructor en particular considere más apropiado. Espero que estas sugerencias al menos den algunas ideas sobre las posibilidades.
+
+Son muchas las personas a las que debo una palabra especial de agradecimiento por su ayuda con esta nueva edición del libro. Las primeras versiones del manuscrito se utilizaron en cursos en varias universidades diferentes. Me gustaría agradecer en particular a los Profs. AUTOMÓVIL CLUB BRITÁNICO. Sawchuk, J.F. Walkup, J. Leger, P. Pichon, D. Mehrl y sus muchos estudiantes por detectar tantos errores tipográficos y, en algunos casos, errores absolutos. I. Erteza y M. Bashaw también hicieron comentarios útiles, por los cuales estoy agradecido. Los revisores anónimos de manuscritos contratados por el editor también hicieron varias sugerencias útiles. Tenemos una deuda especial con el Prof. Emmett Leith, quien brindó muchas sugerencias útiles. También me gustaría agradecer a los estudiantes de mi clase de Óptica de Fourier de 1995, quienes compitieron ferozmente para ver quién podía encontrar la mayor cantidad de errores. Sin duda hay otros a los que debo agradecer, y pido disculpas por no mencionarlos explícitamente aquí. Finalmente, agradezco a Hon Mai, sin cuya paciencia, aliento y apoyo este libro no hubiera sido posible.
+
+José W. Goodman
+
+\section{Introducción}
+
+\subsection{Óptica, información, y comunicación}
+
+Desde finales de la década de 1930, la venerable rama de la física conocida como óptica ha desarrollado gradualmente lazos cada vez más estrechos con las ciencias de la comunicación y la información de la ingeniería eléctrica. La tendencia es comprensible, ya que tanto los sistemas de comunicación como los sistemas de imágenes están diseñados para recopilar o transmitir información. En el primer caso, la información es generalmente de naturaleza temporal (por ejemplo, una tensión modulada o una forma de onda de corriente), mientras que en el segundo caso es de naturaleza espacial (por ejemplo, una amplitud de luz o una distribución de intensidad en el espacio), pero desde un punto de vista abstracto. punto de vista, esta diferencia es bastante superficial.
+
+Quizás el lazo más fuerte entre las dos disciplinas radica en las matemáticas similares que pueden usarse para describir los respectivos sistemas de interés: las matemáticas del análisis de Fourier y la teoría de sistemas. La razón fundamental de la similitud no es simplemente el tema común de la "información", sino ciertas propiedades básicas que comparten los sistemas de comunicación y los sistemas de imágenes. Por ejemplo, muchas redes electrónicas y dispositivos de imágenes comparten las propiedades denominadas linealidad e invariancia (para ver las definiciones, consulte el Capítulo 2). Cualquier red o dispositivo (electrónico, óptico o de otro tipo) que posea estas dos propiedades se puede describir matemáticamente con considerable facilidad utilizando técnicas de análisis de frecuencia. Por lo tanto, así como es conveniente describir un amplificador de audio en términos de su respuesta de frecuencia (temporal), también es conveniente describir un sistema de imágenes en términos de su respuesta de frecuencia (espacial).
+
+Las similitudes no terminan cuando las propiedades de linealidad e invariancia están ausentes. Ciertos elementos ópticos no lineales (p. ej., películas fotográficas) tienen relaciones de entrada-salida que son directamente análogas a las características correspondientes de los componentes electrónicos no lineales (diodos, transistores, etc.), y se puede aplicar un análisis matemático similar en ambos casos.
+
+\subsection{El libro}
+
+Se supone que los lectores de este libro tienen una base sólida en el análisis de Fourier y la teoría de sistemas lineales. el Capítulo 2 repasa los antecedentes requeridos; para no aburrir a quienes están bien versados en el análisis de señales y sistemas temporales, el repaso se realiza para funciones de dos variables independientes. Tales funciones son, por supuesto, de interés primordial en óptica, y la extensión de una a dos variables independientes proporciona una nueva riqueza a la teoría matemática, introduciendo muchas propiedades nuevas que no tienen equivalente directo en la teoría de señales y sistemas temporales.
+
+El fenómeno llamado difracción es de suma importancia en la teoría de los sistemas ópticos. El Capítulo 3 trata los fundamentos de la teoría de la difracción escalar, incluidos los enfoques de Kirchhoff, Rayleigh Sommerfeld y el espectro angular. En el Capítulo 4, se introducen ciertas aproximaciones a los resultados generales, a saber, las aproximaciones de Fresnel y Fraunhofer, y se presentan ejemplos de cálculos de patrones de difracción.
+
+El Capítulo 5 considera el análisis de sistemas ópticos coherentes que consisten en lentes y propagación en el espacio libre. El enfoque es el de la óptica ondulatoria, en lugar del método de análisis más común de la óptica geométrica. Una lente delgada se modela como una transformación de fase cuadrática; la ley habitual de la lente se deriva de este modelo, al igual que ciertas propiedades transformantes de Fourier de las lentes.
+
+El Capítulo 6 considera la aplicación de técnicas de análisis de frecuencia a sistemas de imágenes tanto coherentes como incoherentes. Se definen funciones de transferencia apropiadas y se discuten sus propiedades para sistemas con y sin aberraciones. Los sistemas coherentes e incoherentes se comparan desde varios puntos de vista. Se derivan los límites a la resolución alcanzable.
+
+En el Capítulo 7 se considera el tema de la modulación de frente de onda. Se discuten las propiedades de la película fotográfica como medio de entrada para sistemas ópticos coherentes e incoherentes. Luego se dirige la atención a los moduladores de luz espacial, que son dispositivos para ingresar información en sistemas ópticos en tiempo real o casi en tiempo real. Finalmente, los elementos ópticos difractivos se describen con cierto detalle.
+
+La atención se centra en el procesamiento de información óptica analógica en el Capítulo 8. Se consideran los sistemas de procesamiento continuo y discreto. Se consideran las aplicaciones para la mejora de imágenes, el reconocimiento de patrones y el procesamiento de datos de radar de apertura sintética.
+
+El capítulo final está dedicado al tema de la holografía. Las técnicas desarrolladas por Gabor y por Leith y Upatnieks se consideran en detalle y se comparan. Se tratan tanto hologramas finos como gruesos. Se presentan extensiones de imágenes tridimensionales. Se describen varias aplicaciones de la holografía, pero el énfasis está en los fundamentos.
+
+\end{document}

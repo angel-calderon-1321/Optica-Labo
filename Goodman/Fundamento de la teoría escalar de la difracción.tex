@@ -1,0 +1,68 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[latin1]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[spanish]{babel}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage[colorlinks=true, linkcolor=red, citecolor=red, urlcolor=blue]{hyperref}
+\usepackage[total={16cm,24cm},centering]{geometry}
+\parskip= 5mm %espacio entre párrafos
+\usepackage{caption} %caption personalizado
+\date{}
+\author{Goodman}
+\title{Fundamentos de la teoría escalar de la difracción}
+\begin{document}
+\maketitle
+\newpage
+\tableofcontents
+\newpage
+
+El fenómeno conocido como \textbf{difracción} desempeña un papel de suma importancia en las ramas de la física y la ingeniería que se ocupan de la propagación de ondas. En este capítulo, consideramos algunos de los fundamentos de la teoría de la difracción escalar. Si bien la teoría que se analiza aquí es lo suficientemente general como para aplicarse en otros campos, como la propagación de ondas acústicas y de radio, las aplicaciones de interés principal se centrarán en el ámbito de la óptica física. Para comprender plenamente las propiedades de los sistemas de procesamiento de datos e imágenes ópticas, es esencial comprender la difracción y las limitaciones que impone al rendimiento del sistema. En el material que sigue, se encontrarán diversas referencias a tratamientos más completos de la teoría de la difracción.
+
+\section{Introducción Histórica}
+
+Antes de comenzar a analizar la difracción, es necesario mencionar otro fenómeno con el que no debe confundirse: la refracción. La refracción puede definirse como la curvatura de los rayos de luz que se produce cuando pasan por una región en la que hay un gradiente de la velocidad local de propagación de la onda. El ejemplo más común se produce cuando una onda de luz encuentra un límite nítido entre dos regiones que tienen diferentes índices de refracción. La velocidad de propagación en el primer medio, que tiene un índice de refracción $n_1$, es $v_1=c/n1$, siendo $c$ la velocidad de la luz en el vacío. La velocidad de propagación en el segundo medio es $v_2 = c/n_2$.
+
+Como se muestra en la figura \ref{fig3-1}, los rayos de luz incidentes se curvan en la interfaz. Los ángulos de incidencia y refracción están relacionados por la \textbf{ley de Snell}, que es la base de la óptica geométrica.
+
+\begin{equation}
+n_1 \sin \theta_1 = n_2 \sin \theta_2
+\end{equation}
+
+donde en este ejemplo $n_2>n_1$ y por lo tanto $\theta_2<\theta_1$.
+
+\begin{figure}[h!]
+\centering
+\includegraphics[scale=0.7]{fig3-1.png}
+\caption{Ley de Snell en un límite agudo}\label{fig3-1}
+\end{figure}
+
+Los rayos de luz también se desvían por reflexión, que puede ocurrir en una interfaz metálica o dieléctrica. La relación fundamental que rige este fenómeno es que el ángulo de reflexión es siempre igual al ángulo de incidencia.
+
+El término difracción ha sido definido por Sommerfeld (Ref. [270]) como \textbf{cualquier desviación de los rayos de luz de trayectorias rectilíneas que no puede interpretarse como reflexión o refracción}. La difracción es causada por el confinamiento de la extensión lateral de una onda, y es más apreciable cuando ese confinamiento es de tamaños comparables con una longitud de onda de la radiación que se está utilizando. El fenómeno de difracción tampoco debe confundirse con el efecto de penumbra, por el cual la extensión finita de una fuente hace que la luz transmitida por una pequeña abertura se disperse a medida que se propaga alejándose de esa abertura (ver Figura \ref{fig3-2}). Como se puede ver en la figura, el efecto de penumbra no implica ninguna desviación de los rayos de luz.
+
+\begin{figure}[h!]
+\centering
+\includegraphics[scale=0.6]{fig3-2.png}
+\caption{Efecto penumbra}\label{fig3-2}
+\end{figure}
+
+El descubrimiento y la explicación de los efectos de difracción tienen una historia fascinante. El primer informe y descripción precisos de un fenómeno de este tipo fueron realizados por Grimaldi y se publicaron en el año 1665, poco después de su muerte. Las mediciones informadas se realizaron con un aparato experimental similar al que se muestra en la figura \ref{fig3-3}. Se iluminó una abertura en una pantalla opaca con una fuente de luz, elegida lo suficientemente pequeña como para introducir un efecto de penumbra despreciable; la intensidad de la luz se observó a través de un plano a cierta distancia detrás de la pantalla. La teoría corpuscular de la propagación de la luz, que era el medio aceptado para explicar los fenómenos ópticos en ese momento, predijo que la sombra detrás de la pantalla debería estar bien definida, con bordes nítidos. Las observaciones de Grimaldi indicaron, sin embargo, que la transición de la luz a la sombra era gradual en lugar de abrupta. Si la pureza espectral de la fuente de luz hubiera sido mejor, podría haber observado resultados aún más sorprendentes, como la presencia de franjas claras y oscuras que se extendían hasta el interior de la sombra geométrica de la pantalla. Estos efectos no pueden explicarse mediante una teoría corpuscular de la luz, que requiere la propagación rectilínea de los rayos de luz en ausencia de reflexión y refracción.
+
+\begin{figure}[h!]
+\centering
+\includegraphics[scale=0.6]{fig3-3.png}
+\caption{Disposición utilizada para observar la difracción de la luz.}\label{fig3-3}
+\end{figure}
+
+El primer paso en la evolución de una teoría que explicase tales efectos lo dio el primer defensor de la teoría ondulatoria de la luz, Christian Huygens, en el año 1678. Huygens expresó la convicción intuitiva de que si cada punto del frente de onda de una perturbación se consideraba una nueva fuente de una perturbación esférica "secundaria", entonces el frente de onda en un instante posterior podría encontrarse construyendo la "envoltura" de las ondículas secundarias, como se ilustra en la figura 3.4.
+
+El progreso en la comprensión de la difracción se vio obstaculizado durante todo el siglo XVIII por el hecho de que Isaac Newton, un científico con una enorme reputación por sus muchas contribuciones a la física en general y a la óptica en particular, favoreció la teoría corpuscular de la luz ya en 1704. Sus seguidores apoyaron esta visión rotundamente. No fue hasta 1804 que se produjo un progreso significativo adicional. En ese año, Thomas Young, un médico inglés, fortaleció la teoría ondulatoria de la luz al introducir el concepto crítico de interferencia. La idea era radical en su momento, ya que afirmaba que, en condiciones adecuadas, se podía añadir luz a la luz y producir oscuridad.
+
+Las ideas de Huygens y Young se reunieron en 1818 en las famosas memorias de Augustin Jean Fresnel. Al hacer algunas suposiciones bastante arbitrarias sobre las amplitudes y fases de las fuentes secundarias de Huygens y al permitir que las diversas ondículas interfirieran entre sí, Fresnel pudo calcular la distribución de la luz en patrones de difracción con excelente precisión.
+
+En la presentación de Fresnel de su trabajo ante un comité de premios de la Academia Francesa de Ciencias, su teoría fue fuertemente cuestionada por el gran matemático francés S. Poisson, miembro del comité. Demostró lo absurdo de la teoría al mostrar que predecía la existencia de un punto brillante en el centro de la sombra de un disco opaco. F. Arago, que presidía el comité de premios, realizó un experimento de ese tipo y encontró el punto predicho. Fresnel ganó el premio y desde entonces el efecto se conoce como \textbf{mancha de Poisson}.
+
+\end{document}

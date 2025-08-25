@@ -1,0 +1,4 @@
+\babel@toc {spanish}{}\relax 
+\contentsline {section}{\numberline {1}BACKGROUND}{3}{section.1}%
+\contentsline {subsection}{\numberline {1.1}Intensidad de campo de ondas}{3}{subsection.1.1}%
+\contentsline {subsection}{\numberline {1.2}El principio de Huygens-Fresnel en coordenadas rectangulares}{3}{subsection.1.2}%

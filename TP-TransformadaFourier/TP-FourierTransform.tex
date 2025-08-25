@@ -1,0 +1,48 @@
+\documentclass[12pt,a4paper]{article}
+
+%paquetes básicos
+\usepackage[latin1]{inputenc}
+\usepackage[T1]{fontenc}% Codificación de fuente
+\usepackage[spanish]{babel}% Idioma español
+\usepackage{lmodern}% Fuente Latin Modern (limpia y profesional)
+\usepackage{amsmath}% Matemáticas
+\usepackage{amsfonts}
+\usepackage{amssymb}% Matemáticas
+\usepackage{graphicx}
+\usepackage{xcolor,soul}
+
+% Definir comandos para diferentes colores
+\newcommand{\hly}[1]{\sethlcolor{yellow!40}\hl{#1}}
+\newcommand{\hlb}[1]{\sethlcolor{blue!20}\hl{#1}}
+\newcommand{\hlp}[1]{\sethlcolor{magenta!15}\hl{#1}}
+
+\usepackage[colorlinks=true, linkcolor=red, citecolor=red, urlcolor=blue]{hyperref}
+\usepackage[total={16cm,24cm},centering]{geometry}
+\parskip= 5mm %espacio entre párrafos
+\usepackage{caption} %caption personalizado
+
+\title{Trabajo Práctico: Transformada de Fourier}
+\author{Angel Calderon}
+\date{\today}
+
+\begin{document}
+\maketitle
+\newpage
+\tableofcontents
+\newpage
+
+\section{Ejercicio 1}
+Sea la función periódica:
+
+\begin{align}
+f(x) = 
+\begin{cases}
+  1 & \quad 0 < x < \tfrac{\lambda}{2}, \\[6pt]
+ -1 & \quad \tfrac{\lambda}{2} < x < \lambda
+\end{cases}
+\end{align}
+
+\subsection{a}
+En una planilla de cálculo genera la función f(x) y grafícala.
+
+\end{document}

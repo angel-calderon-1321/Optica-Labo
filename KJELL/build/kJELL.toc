@@ -1,0 +1,21 @@
+\contentsline {section}{\numberline {1}B�sicos}{2}{}%
+\contentsline {subsection}{\numberline {1.1}Introducci�n}{2}{}%
+\contentsline {subsection}{\numberline {1.2}Movimiento Ondulatorio. Espectro Electromagn�tico}{2}{}%
+\contentsline {subsection}{\numberline {1.3}Ondas planas. Rayos de luz}{3}{}%
+\contentsline {subsection}{\numberline {1.4}Diferencia de fase}{4}{}%
+\contentsline {subsection}{\numberline {1.5}Notaci�n Compleja. Amplitud Compleja}{4}{}%
+\contentsline {subsection}{\numberline {1.6}Incidencia Oblicua de una Onda Plana}{5}{}%
+\contentsline {subsection}{\numberline {1.7}Onda Esf�rica}{6}{}%
+\contentsline {subsection}{\numberline {1.8}Intensidad}{7}{}%
+\contentsline {subsection}{\numberline {1.9}�PTICA Geom�trica}{7}{}%
+\contentsline {subsection}{\numberline {1.10}Lentes Simples Convexas (Positivas)}{8}{}%
+\contentsline {subsection}{\numberline {1.11}Configuraci�n de Onda Plana}{9}{}%
+\contentsline {section}{\numberline {2}�ptica Gaussiana}{10}{}%
+\contentsline {subsection}{\numberline {2.1}Introducci�n}{10}{}%
+\contentsline {subsection}{\numberline {2.2}Refracci�n en una Superficie Esf�rica}{10}{}%
+\contentsline {section}{\numberline {3}Interferencia}{11}{}%
+\contentsline {subsection}{\numberline {3.1}Introducci�n}{11}{}%
+\contentsline {subsection}{\numberline {3.2}Descripci�n General}{11}{}%
+\contentsline {subsection}{\numberline {3.3}Coherencia}{12}{}%
+\contentsline {subsection}{\numberline {3.4}Interferencia entre dos Ondas Planas}{16}{}%
+\providecommand \tocbasic@end@toc@file {}\tocbasic@end@toc@file 

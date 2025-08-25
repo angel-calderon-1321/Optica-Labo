@@ -1,0 +1,885 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[latin1]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[spanish]{babel}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{xcolor,soul}
+
+% Definir comandos para diferentes colores
+\newcommand{\hly}[1]{\sethlcolor{yellow!40}\hl{#1}}
+\newcommand{\hlb}[1]{\sethlcolor{blue!20}\hl{#1}}
+\newcommand{\hlp}[1]{\sethlcolor{magenta!15}\hl{#1}}
+
+\usepackage[colorlinks=true, linkcolor=red, citecolor=red, urlcolor=blue]{hyperref}
+\usepackage[total={16cm,24cm},centering]{geometry}
+\parskip= 5mm %espacio entre párrafos
+\usepackage{caption} %caption personalizado
+\date{}
+\author{kjell}
+\title{Optical Metrology}
+
+\begin{document}
+\maketitle
+\newpage
+\tableofcontents
+\newpage
+
+{\bf Preface}
+
+Esta edición de Metrología óptica contiene un nuevo capítulo sobre procesos ópticos computarizados, incluida la holografía digital y la fotografía digital moteada. El Capítulo 2, sobre óptica gaussiana, y el Capítulo 5, sobre fuentes de luz y detectores, se amplían considerablemente para incluir descripciones de sistemas de imágenes estándar, diodos emisores de luz y detectores de estado sólido. Se incluyen nuevas secciones separadas sobre tomografía de coherencia óptica, correlación moteada, transformada rápida de Fourier, desenvolvimiento de fase temporal y sensores de fibra Bragg. Finalmente, se da un nuevo apéndice sobre series de Fourier. Las soluciones a los problemas del final del capítulo se pueden encontrar en \url{http://www.wiley.co.uk/opticalmetrology}.
+
+Desde la edición anterior, la cámara electrónica se ha impuesto cada vez más como medio de grabación. La palabra "digital" se está convirtiendo en un prefijo para un número cada vez mayor de técnicas. Creo que esta nueva edición refleja esta tendencia.
+
+Es para mí un gran placer agradecer las muchas discusiones estimulantes con el profesor H.M. Pedersen en la Universidad Noruega de Ciencia y Tecnología. Gracias también a John Petter G°asvik por diseñar muchas de las nuevas figuras.
+
+\section{Básicos}
+\subsection{Introducción}
+
+Antes de entrar en las diferentes técnicas de metrología óptica se deben establecer algunos términos y definiciones básicos. La metrología óptica se trata de la luz y, por lo tanto, debemos desarrollar una descripción matemática de las ondas y la propagación de las ondas, introduciendo términos importantes como longitud de onda, fase, frentes de fase, rayos, etc. El tratamiento se mantiene lo más simple posible, sin entrar en la complicada teoría electromagnética.
+
+\subsection{Movimiento Ondulatorio. Espectro Electromagnético}
+
+La figura \ref{fig1-1} muestra una instantánea de una onda armónica que se propaga en la dirección $z$. La perturbación $\psi(z, t)$:
+
+\begin{equation}\label{ec1-1}
+\psi(z,t) = U \, cos\left[2\pi \left({z\over \lambda}-\nu t\right)+\delta\right]
+\end{equation}
+
+\[\psi(z,t) = U \, cos \left(k \, z-\omega t+\delta \right)\]
+
+\begin{figure}[h!]
+\centering
+\includegraphics[scale=0.8]{fig1-1.png}
+\caption{onda armónica}\label{fig1-1}
+\end{figure}
+
+El argumento de la función coseno se denomina fase y $\delta$ la constante de fase. Otros parámetros involucrados son\\ \\
+$U = $ amplitud \\
+$\lambda = $ longitud de onda\\
+$\nu =$ frecuencia (número de ondas por unidad de tiempo)
+$k = 2\pi /\lambda$ el número de ondas
+
+La relación entre la frecuencia y la longitud de onda de ondas esta dado por:
+
+\begin{equation}\label{ec1-2}
+\lambda \nu = v
+\end{equation}\\\\
+donde \\\\
+$v$ es la velocidad de la onda\\
+$\psi (x,y)$ podría representar el campo de una onda electromagnética donde
+
+\[v = c = 3\times 10^8 m/s\]
+
+La relación entre la velocidad $c$ de una onda electromagnética en el vacío y la velocidad v en un medio se conoce como índice absoluto de refracción $n$ de ese medio.
+
+\begin{equation}
+n = {c\over v}
+\end{equation}
+
+El espectro electromagnético está dado en la siguiente tabla  
+
+\begin{figure}[h!]
+\centering
+\includegraphics[scale=0.7]{tabla1-1.png}
+%\caption[tabla1-1]{Espectro electromagnético (De Young 1968)}\label{tabla1-1}
+\end{figure}
+
+Aunque en realidad no afecta nuestro argumento, nos ocuparemos principalmente de la luz visible donde\\\\
+$\lambda = 400-700$ nm  (1 nm $= 10^{-9}$ m)\\
+$\nu = (4.3-7.5)\times 10^{14}$Hz
+
+\subsection{Ondas planas. Rayos de luz}
+
+Las ondas electromagnéticas no son bidimensionales como en la Figura \ref{fig1-1}, sino ondas tridimensionales. El ejemplo más simple de este tipo de ondas se muestra en la figura \ref{fig1-2}, donde se dibuja una onda plana que se propaga en la dirección del vector k. Los puntos de igual fase se encuentran en planos paralelos que son perpendiculares a la dirección de propagación. Estos planos se denominan {\bf planos de fase} o {\bf frentes de fase}. En la figura, solo se dibujan algunos de los infinitos planos de fase. Idealmente, también deberían tener una extensión infinita.
+
+\begin{figure}[h!]
+\centering
+\includegraphics[scale=0.8]{fig1-2.png}
+\caption{Onda plana}\label{fig1-2}
+\end{figure}
+
+La ecuación \ref{ec1-1} describe una onda plana que se propaga en la dirección $z$. ($z =cte$ da la misma fase para todos los $x$, $y$, es decir, planos que son normales a la dirección $z$.) En el caso general en el que una onda plana se propaga en la dirección de un vector unitario {\bf n}, \hly{la expresión que describe el campo en un punto arbitrario con vector de radio ${\bf r} = (x, y, z)$ viene dado por:}
+
+\begin{equation}\label{ec1-4}
+\psi(x,y,z,t) = U \, cos[k\, {\bf n\cdot r} -2\pi \, \nu t +\delta]
+\end{equation}
+
+Que el producto escalar que cumple la condición ${\bf n \cdot r} = cte$ describe un plano que es perpendicular a {\bf n} se muestra en el caso bidimensional de la figura \ref{fig1-3}. Que esto es correcto también en el caso tridimensional se prueba fácilmente.
+
+\begin{figure}[h!]
+\centering
+\includegraphics[scale=0.8]{fig1-3.png}
+\caption{}\label{fig1-3}
+\end{figure}
+
+A continuación damos la definición de {\bf rayos de luz}. \hly{Son líneas dirigidas que son en todas partes perpendiculares a los planos de fase}. Esto se ilustra en la Figura \ref{fig1-4}, donde se dibuja la sección transversal de un frente de onda bastante complicado y se dibujan algunos de los rayos de luz perpendiculares al frente de onda.
+
+\begin{figure}[h!]
+\centering
+\includegraphics[scale=0.8]{fig1-4.png}
+\caption{}\label{fig1-4}
+\end{figure}
+
+\subsection{Diferencia de fase}
+
+Volvamos por un momento a la onda plana descrita por la Ecuación \ref{ec1-1}. En dos puntos $z_1$ y $z_2$ a lo largo de la dirección de propagación, las fases son $\phi_1 = k \, z_1-2\pi \, \nu t + \delta$ y $\phi_2 = k \, z_2 -2\pi \: \nu t + \delta$ respectivamente, y la diferencia de fase
+
+\begin{equation}
+\Delta \phi = \phi_1 - \phi_2 = k (z_1 -z_2)
+\end{equation}
+
+Por lo tanto, vemos que la diferencia de fase entre dos puntos a lo largo de la dirección de propagación de una onda plana es igual a la diferencia de longitud de trayectoria geométrica multiplicada por el número de onda. Esto es generalmente cierto para cualquier rayo de luz. Cuando la luz pasa por un medio diferente al aire (vacío), tenemos que multiplicar por el índice de refracción $n$ del medio, tal que\\\\
+longitud del camino óptico = $n \times$ (longitud del camino geométrico)\\
+diferencia de fase = $k \times$ (longitud del camino óptico)\\\\
+\hly{LCO = $n \times$ LCG\\
+$\Delta \phi = k\times$ LCO}
+
+Longitud de Camino Geométrico: es simplemente la distancia física real que recorre la luz. Es lo que medirías con una regla si pudieras seguir el trayecto de la luz.
+
+Longitud de Camino Óptico: es la distancia que la luz habría recorrido en el vacío en el mismo tiempo que le tomó recorrer el camino real a través de los medios.
+
+{\bf ¿Por qué esta diferencia?}
+
+La luz viaja más lento en medios materiales que en el vacío:\\\\
+Velocidad en el vacío: c\\
+Velocidad en medio con índice n: c/n
+
+El tiempo que tarda la luz en recorrer cada segmento es:\\\\
+En medio 1: $t_1 = d_1/(c/n_1) = n_1d_1/c$\\
+En medio 2: $t_2 = d_2/(c/n_2) = n_2d_2/c$\\
+Tiempo total: $t = (n_1d_1 + n_2d_2)/c$
+
+La distancia que habría recorrido en el vacío en ese mismo tiempo t sería:\\\\
+Distancia en vacío $= c \times t = n_1d_1 + n_2d_2$
+
+{\bf La diferencia de fase espacial NO depende del tiempo}
+
+¿Por qué funciona esto?\\
+Porque aunque ambos puntos oscilan en el tiempo, oscilan de manera sincronizada. Es como dos personas en una cinta transportadora: ambas se mueven, pero la distancia entre ellas permanece constante.
+
+{\bf Analogía visual}
+
+Imagina dos ondas en el agua que se propagan paralelamente. Aunque ambas se mueven, la diferencia de fase entre ellas (si una está adelantada respecto a la otra) permanece constante. Cuando interfieren, crean un patrón de ondas estacionario que no se mueve.\\\
+{\bf En resumen:} Aunque cada punto oscila temporalmente, las relaciones de fase espaciales son estables y medibles a través de patrones de interferencia.
+
+\subsection{Notación Compleja. Amplitud Compleja}
+
+La expresión en la Ecuación \ref{ec1-4} se puede escribir en forma compleja como
+
+\begin{subequations}
+
+\begin{equation}\label{ec1-6}
+\psi(x,y,z,t) = Re \left\{ U\, e^{i(\phi -2\pi \, \nu t)}\right\}
+\end{equation}
+
+donde
+
+\begin{equation}
+\phi = k\, {\bf n\cdot r} +\delta
+\end{equation}
+
+\end{subequations}
+
+es la {\bf fase espacial dependiente}. En el Apéndice A, se dan algunas reglas aritméticas simples para números complejos.
+
+En la descripción de los fenómenos ondulatorios, se adopta comúnmente la notación de la Ecuación \ref{ec1-6} y \hly{se omite $Re$ porque se entiende silenciosamente que el campo está descrito por la parte real}.
+
+Una ventaja de una representación compleja del campo es que las partes espacial y temporal se factorizan:
+
+\begin{equation}
+\psi(x,y,z,t) = U\, e^{i(\phi -2\pi \, \nu t)}
+\end{equation}
+
+\hly{En metrología óptica} (y en otras ramas de la óptica) \hly{lo que más interesa es la distribución espacial del campo}. Dado que la parte dependiente del tiempo se conoce para cada componente de frecuencia, podemos omitir el factor $e^{-i2\pi \, \nu t}$ y solo considerar la {\bf amplitud espacial compleja}
+
+\begin{equation}
+u = U\, e^{i\phi}
+\end{equation}
+
+Esta expresión describe no solo una onda plana, sino una onda tridimensional general donde tanto la amplitud $U$ como la fase $\phi$ pueden ser funciones de $x$, $y$ y $z$.
+
+La figura \ref{fig1-5}(a, b) muestra ejemplos de una onda cilíndrica y una onda esférica, mientras que en la figura  \ref{fig1-5}(c) se dibuja un frente de onda más complicado que resulta de la reflexión de una superficie rugosa. Tenga en cuenta que lejos de la fuente puntual de la figura \ref{fig1-5}(b), la onda esférica es casi una onda plana sobre un área pequeña. \hly
+{Una fuente puntual en el infinito representa una onda plana.}
+
+\begin{figure}[h!]
+\centering
+\includegraphics[scale=0.8]{fig1-5.png}
+\caption{}\label{fig1-5}
+\end{figure}
+
+{\bf El problema con la parte temporal}
+
+La luz visible tiene frecuencias del orden de $10^{14} - 10^{15} Hz$. Esto significa que la onda oscila cientos de miles de millones de veces por segundo.
+No existe ningún detector electrónico que pueda seguir estas oscilaciones tan rápidas. Los detectores más rápidos que tenemos (fotodiodos, fotomultiplicadores, etc.) tienen tiempos de respuesta del orden de:
+
+\begin{itemize}
+\item Picosegundos ($10^{-12} s$) en el mejor caso
+\item Nanosegundos ($10^{-9} s$) más típicamente
+\end{itemize}
+
+Pero necesitaríamos detectores con tiempos de respuesta de femtosegundos ($10^{15} s$) para "ver"  las oscilaciones individuales.
+
+{\bf Lo que sí podemos medir}
+
+Los detectores ópticos son cuadráticos - responden al cuadrado del campo eléctrico, que es proporcional a la intensidad:
+\[I \propto |E|^2 = E \times E^{*}\]
+
+Cuando el detector "ve"  la luz, automáticamente promedia sobre muchísimos ciclos de oscilación (millones o billones), midiendo la intensidad promedio temporal.
+
+Entonces, la parte espacial sí la preservamos. Aunque perdemos la información temporal rápida, {\bf conservamos completamente la información espacial}:
+
+\begin{itemize}
+\item Patrones de interferencia espaciales
+\item Distribuciones de intensidad en el plano de la imagen
+\item Variaciones de fase espaciales (que se traducen en patrones de intensidad)
+\end{itemize}
+
+\subsection{Incidencia Oblicua de una Onda Plana}
+
+En óptica, uno suele estar interesado en la {\bf distribución de amplitud y fase de una onda} sobre planos fijos en el espacio. Consideremos el caso simple esbozado en la figura \ref{fig1-6} donde una onda plana cae oblicuamente sobre un plano paralelo al plano $xy$ a una distancia $z$ de él. La onda se propaga a lo largo del vector unitario {\bf n} que se encuentra en el plano $xz$ (definido como el plano de incidencia) y forma un ángulo $\theta$ con el eje $z$. Por lo tanto, las componentes de los vectores {\bf n} y {\bf r} son\\\\
+${\bf n} = (sin\theta, 0, cos\theta)$\\
+${\bf r} = (x,y,z)$
+
+\begin{figure}[h!]
+\centering
+\includegraphics[scale=0.8]{fig1-6.png}
+\caption{}\label{fig1-6}
+\end{figure}
+
+Estas expresiones puestas en la Ecuación \ref{ec1-6} (Re y parte temporal omitidas) dan
+
+\begin{subequations}\label{ec1-9}
+
+\begin{equation}
+u = U\, e^{ik(x\, sin\theta+z\, cos\theta)}
+\end{equation}
+
+Para $z = 0$ (el plano $xy$) esto se reduce a
+
+\begin{equation}
+u = U\, e^{ik\, x\, sin\theta}
+\end{equation}
+
+\end{subequations}
+
+\subsection{Onda Esférica}
+
+Una onda esférica, ilustrada en la figura \ref{fig1-5}(b), es una onda emitida por una fuente puntual. Debe entenderse fácilmente que la {\bf amplitud compleja} o {\bf amplitud de campo} que representa una onda esférica debe ser de la forma
+
+\begin{equation}\label{ec1-10}
+u = {U\over r}e^{ik\, r}
+\end{equation}
+
+donde r es la distancia radial desde la fuente puntual. Vemos que la fase de esta onda es constante para r = constante, es decir, los \hly{frentes de fase son esferas centradas en la fuente puntual}. La r en el denominador de la Ecuación \ref{ec1-10} expresa el hecho de que \hly{la amplitud disminuye como el inverso de la distancia desde la fuente puntual}.
+
+\hrule
+
+{\bf ¿Por qué $1/r$ y no $1/r^2$?}
+
+La ley del cuadrado inverso que gobierna la intensidad de la luz, no la amplitud.
+
+La diferencia clave:
+\begin{itemize}
+\item Intensidad (energía): Sigue la ley $1/r^2$\\
+$I \propto 1/r^2$
+\item Amplitud de campo: Sigue la ley $1/r$\\
+$\psi \propto 1/r$
+\end{itemize}
+
+{\bf ¿Por qué esta diferencia?}
+
+La intensidad es proporcional al cuadrado de la amplitud:
+
+$I \propto |\psi|^2$
+
+Si $\psi \propto 1/r$, entonces:
+
+$I \propto |\psi|^2 \propto (1/r)^2 = 1/r^2$
+
+¡Ahí tienes tu ley del cuadrado inverso!
+
+{\bf Interpretación física:}
+
+Una fuente puntual emite energía uniformemente en todas las direcciones
+La energía total se distribuye sobre esferas cada vez más grandes (área $\propto 4\pi r^2$)
+\hly{Como la energía total se conserva, la densidad de energía (intensidad) debe disminuir como $1/r^2$}
+Pero la amplitud del campo solo disminuye como $1/r$
+
+{\bf ¿De dónde sale matemáticamente?}
+
+El paso de onda plana a esférica surge de resolver la ecuación de onda en coordenadas esféricas. En el caso más simple (fuente puntual isotrópica), la solución tiene simetría esférica y la forma:
+
+$\psi(r,t) = f(r \pm ct)$
+
+La condición de que la energía total se conserve (principio de conservación) lleva naturalmente a la dependencia 1/r en la amplitud.
+
+\hrule
+
+\begin{figure}[h!]
+\centering
+\includegraphics[scale=0.8]{fig1-7.png}
+\caption{}\label{fig1-7}
+\end{figure}
+
+Considere la Figura \ref{fig1-7} donde una fuente puntual se encuentra en el plano $x_0$ y $y_0$ en un punto de coordenadas $x_0$, $y_0$ . La amplitud del campo en un plano paralelo al plano $x_0y_0$ a una distancia $z$ vendrá dada por la ecuación \ref{ec1-10} con
+
+\begin{equation}
+r = \sqrt{z^2 + (x-x_0)^2 + (y- y_0)^2}
+\end{equation}
+
+donde $x$, $y$ son las coordenadas del plano iluminado. Esta expresión es, sin embargo, bastante engorrosa para trabajar. Por lo tanto, generalmente se hacen algunas aproximaciones, la primera de las cuales es reemplazar $z$ por $r$ en el denominador de la Ecuación \ref{ec1-10} (supongo que se debe a que tomamos $z\gg x-x_0, y-y_0$). Esta aproximación no se puede poner en el exponente ya que el error resultante se multiplica por el número muy grande $k$. Un medio conveniente para la \hlp{aproximación de la fase} lo ofrece una {\bf expansión binomial de la raíz cuadrada}. 
+
+Queremos  quitarnos de encima la raíz. Saco factor común z y aproximo la función $f(\epsilon) = \sqrt{1+\epsilon}$
+
+\begin{equation}
+r = z \sqrt{1 + \left({x-x_0\over z}\right)^2 + \left({y-y_0\over z}\right)^2} \approx z\left[ 1 +{1\over 2} \left({x-x_0\over z}\right)^2 + {1\over 2} \left({y-y_0\over z}\right)^2\right]
+\end{equation}
+
+donde $r$ se aproxima por los dos primeros términos de la expansión.
+
+La amplitud del campo complejo en el plano $xy$ que resulta de una fuente puntual en $x_0$, $y_0$ en el plano $x_0y_0$ está dada por lo tanto por
+
+\begin{equation}
+u(x,y,z) = {U\over z} e^{ik\, z} e^{i(k/2z)[(x-x_0)^2+(y-y_0)^2]}
+\end{equation}
+
+Las aproximaciones que conducen a esta expresión se denominan {\bf aproximaciones de Fresnel}. No discutiremos aquí las condiciones detalladas para su validez, pero está claro que \hly{$(x-x_0)$ y $(y-y_0)$ deben ser mucho menores que la distancia $z$.}
+
+\subsection{Intensidad}
+
+En cuanto al registro de la luz, nos encontramos con que no existen medios para el registro directo de la amplitud del campo. Los detectores más comunes (como el ojo, los fotodiodos, los tubos de multiplicación, la película fotográfica, etc.) registran la irradiancia (es decir, el efecto por unidad de área) que es proporcional al cuadrado de la amplitud del campo, y la parte de la fase desaparece:
+
+\begin{equation}
+I = \vert u \vert^2 = U^2
+\end{equation}
+
+A esta importante cantidad la llamaremos de ahora en adelante intensidad. Mencionamos que la relación correcta entre $U^2$ y la irradiancia está dada por
+
+\begin{equation}
+I = {\epsilon v \over 2}U^2
+\end{equation}
+
+donde $v$ es la velocidad de la onda y $\epsilon$ se conoce como la permitividad eléctrica del medio. En este libro, necesitaremos esta relación solo cuando calculemos la transmitancia en una interfaz (consulte la Sección 9.5).
+
+\subsection{ÓPTICA Geométrica}
+
+\begin{figure}[h!]
+\centering
+\includegraphics[scale=0.8]{fig1-8.png}
+\caption{Ley de reflexión}\label{fig1-8}
+\end{figure}
+
+\begin{figure}[h!]
+\centering
+\includegraphics[scale=0.8]{fig1-9.png}
+\caption{Dispersión desde una superficie rugosa}\label{fig1-9}
+\end{figure}
+
+Para completar, nos referimos a las tres leyes de la óptica geométrica:
+
+\begin{enumerate}
+\item Propagación rectilínea en un medio uniforme y homogéneo.
+\item Reflexión. En la reflexión de un espejo, el ángulo de reflexión es igual al ángulo de incidencia (ver Figura \ref{fig1-8}). En este contexto mencionamos que en la reflexión (dispersión) de una superficie rugosa (rugosidad $>\lambda$) la luz se dispersará en todas las direcciones (ver Figura \ref{fig1-9}).
+\item Refracción. Cuando la luz se propaga de un medio de índice de refracción $n_1$ a un medio de índice de refracción $n_2$, la dirección de propagación cambia de acuerdo con la ley de Snell:
+
+\begin{equation} \label{ec1_16}
+n_1\, sin\theta_1 = n_2\, sin\theta_2
+\end{equation}
+
+donde $\theta_1$ es el ángulo de incidencia y $\theta_2$ es el ángulo de emergencia (ver Figura \ref{fig1-10}). De la Ecuación \ref{ec1_16} vemos que cuando $n_1 > n_2$, podemos tener $\theta_2 = \pi/2$. Esto ocurre para un ángulo de incidencia llamado ángulo crítico dado por
+
+\begin{equation}
+sin\theta_1 = {n_2 \over n_1}
+\end{equation}
+
+Esto se llama reflexión interna total y se tratará con más detalle en la Sección 9.5.
+
+\end{enumerate}
+
+\begin{figure}[h!]
+\centering
+\includegraphics[scale=0.8]{fig1-10.png}
+\caption{Ley de refracción}\label{fig1-10}
+\end{figure}
+
+Finalmente, también mencionamos que para la luz reflejada en la interfaz de la Figura \ref{fig1-10}, cuando $n_1 < n_2$, la fase cambia por $\pi$.
+
+\hrule
+
+La ley de Snell dice que:
+$$n_1 \sin \theta_1 = n_2 \sin \theta_2$$
+
+Cuando la luz pasa de un medio más denso a uno menos denso ($n_1 > n_2$), algo especial puede ocurrir. Reorganizando la ecuación:
+
+$$\sin \theta_2 = \frac{n_1}{n_2} \sin \theta_1$$
+
+Como $n_1 > n_2$, la fracción $\frac{n_1}{n_2} > 1$. Esto significa que $\sin \theta_2$ puede volverse muy grande.
+
+El punto clave es que $\sin \theta_2$ no puede ser mayor que 1 (ya que el seno máximo de cualquier ángulo es 1). Entonces, cuando:
+
+$$\frac{n_1}{n_2} \sin \theta_1 = 1$$
+
+Tenemos $\theta_2 = 90°$ (o $\pi/2$ radianes), lo que significa que el rayo refractado viaja paralelo a la superficie de separación.
+
+El {\bf ángulo crítico} $\theta_c$ es justamente ese ángulo de incidencia que produce $\theta_2 = 90°$:
+
+$$\sin \theta_c = \frac{n_2}{n_1}$$
+
+Si el ángulo de incidencia es mayor que el ángulo crítico, no hay refracción posible y ocurre {\bf reflexión total interna} - toda la luz se refleja de vuelta al primer medio.
+
+Un ejemplo común es la luz pasando del agua ($n \approx 1.33$) al aire ($n \approx 1.0$). El ángulo crítico sería aproximadamente 48.6°.
+
+\hrule
+
+\subsection{Lentes Simples Convexas (Positivas)}
+
+Aquí no entraremos en la teoría general de las lentes, sino que mencionaremos algunas de las propiedades más importantes de una lente ideal simple, convexa. Para obtener más detalles, consulte el Capítulo 2 y la Sección 4.6.
+
+La figura \ref{fig1-11} ilustra la propiedad de formación de imágenes de la lente. Desde un punto de objeto $P_0$, los rayos de luz se emiten en todas las direcciones. Que este punto sea fotografiado significa que todos los rayos de $P_0$ que pasan por la apertura $D$ de la lente se cruzan en un punto de imagen $P_i$.
+
+\begin{figure}[h!]
+\centering
+\includegraphics[scale=0.8]{fig1-11.png}
+\caption{}\label{fig1-11}
+\end{figure}
+
+Para encontrar $P_i$, es suficiente trazar solo dos de estos rayos. La figura \ref{fig1-12} muestra tres de ellos. La distancia $b$ de la lente al plano de la imagen viene dada por la fórmula de la lente
+
+\begin{equation}\label{ec-lente}
+{1\over a} + {1\over b} = {1\over f}
+\end{equation}
+
+y el aumento transversal
+
+\begin{equation}
+m = {h_i \over h_0} = {b\over a}
+\end{equation}
+
+\begin{figure}[h!]
+\centering
+\includegraphics[scale=0.8]{fig1-12.png}
+\caption{}\label{fig1-12}
+\end{figure}
+
+\hrule
+
+{\bf ecuación del fabricante de lentes} (también llamada ecuación de lentes delgadas o fórmula del constructor de lentes).
+
+\[\frac{1}{f}=(n-1)(\frac{1}{R_1}-\frac{1}{R_2})\]
+
+Vamos a desglosar cada término:
+
+$f$ = distancia focal de la lente
+
+$n$ = índice de refracción del material de la lente (relativo al medio que la rodea, usualmente aire con $n = 1$)
+
+$R_1$ = radio de curvatura de la primera superficie (la que encuentra primero la luz)
+
+$R_2$ = radio de curvatura de la segunda superficie
+
+{\bf Convención de signos importante:}
+
+\begin{enumerate}
+\item $R > 0$: superficie convexa (curvada hacia afuera del centro de la lente)
+\item $R < 0$: superficie cóncava (curvada hacia adentro del centro de la lente)  
+\item $R = \infty$: superficie plana
+\end{enumerate}
+
+{\bf Ejemplos prácticos:}
+
+{\em Lente biconvexa:} $R_1 > 0$, $R_2 < 0$\\\\
+* $\frac{1}{R_1} - \frac{1}{R_2} > 0$\\
+* Con $n > 1 \rightarrow f > 0$ (lente convergente)
+
+{\em Lente bicóncava:} $R_1 < 0$, $R_2 > 0$\\\\
+* $\frac{1}{R_1} - \frac{1}{R_2} < 0$\\
+* Con $n > 1 \rightarrow f < 0$ (lente divergente)
+
+Esta ecuación te permite diseñar lentes calculando qué curvatura necesitas en cada superficie para obtener la distancia focal deseada.
+
+\hrule
+
+{\bf Ecuación de lentes delgadas} ec. \ref{ec-lente} (también llamada {\bf ecuación de Gauss} para lentes).
+
+Esta ecuación relaciona las distancias en un sistema óptico con lentes:
+
+\begin{itemize}
+\item $a$ = distancia del objeto a la lente
+\item $b$ = distancia de la imagen a la lente  
+\item $f$ = distancia focal de la lente
+\end{itemize}
+
+{\bf ¿Para qué sirve?}
+
+Te permite calcular dónde se formará la imagen cuando colocas un objeto a cierta distancia de una lente, o viceversa.
+
+{\bf Convención de signos:}
+
+\begin{itemize}
+\item $a > 0$: objeto real (del lado de donde viene la luz)
+\item $a < 0$: objeto virtual
+\item $b > 0$: imagen real (del lado opuesto al objeto)
+\item $b < 0$: imagen virtual (del mismo lado que el objeto)
+\item$f > 0$: lente convergente
+\item $f < 0$: lente divergente
+\end{itemize}
+
+{\bf Ejemplo práctico:}
+Si tienes una lupa con $f = 10$ cm y colocas un objeto a $a = 15$ cm:\\\\
+$$\frac{1}{15} + \frac{1}{b} = \frac{1}{10}$$\\
+$$\frac{1}{b} = \frac{1}{10} - \frac{1}{15} = \frac{1}{30}$$
+
+Por lo tanto $b = 30$ cm $\rightarrow$ imagen real a 30 cm del otro lado de la lente.
+
+Esta ecuación es fundamental en el diseño de cámaras, microscopios, telescopios, y cualquier sistema óptico.
+
+\hrule
+
+En la figura \ref{fig1-13}(a), se ilustra el caso de una fuente puntual situada sobre el eje óptico que forma una onda divergente esférica que se convierte en una onda convergente y se enfoca en un punto sobre el eje óptico. En la figura \ref{fig1-13}(b), la fuente puntual se encuentra sobre el eje a una distancia de la lente igual a la distancia focal $f$. Entonces obtenemos una onda plana que se propaga a lo largo del eje óptico. En la figura \ref{fig1-13}(c), la fuente puntual se desplaza a lo largo del plano focal a una distancia $h$ del eje óptico. Luego obtenemos una onda plana que se propaga en una dirección que forma un ángulo $\theta$ con el eje óptico donde
+
+\begin{equation}
+tan\theta = h/f
+\end{equation}
+
+\begin{figure}[h!]
+\centering
+\includegraphics[scale=0.8]{fig1-13.png}
+\caption{}\label{fig1-13}
+\end{figure}
+
+\subsection{Configuración de Onda Plana}
+
+Finalmente, nos referimos a la Figura \ref{fig1-14} que muestra una configuración comúnmente aplicada para formar una onda plana expandida y uniforme a partir de un rayo láser. 
+
+Analicemos cada configuración de la figura para entender cómo se comporta la luz láser en diferentes situaciones:
+
+{\bf En la figura (a)}, observamos un sistema de expansor de haz donde el láser inicialmente paralelo se dirige hacia la primera lente antes de alcanzar su punto focal. Como el haz no parte desde el foco, la primera lente no puede convertirlo en rayos perfectamente paralelos, sino que produce un haz convergente que se dirige hacia un punto de enfoque. La segunda lente, colocada estratégicamente, intercepta este haz convergente y lo recolima, expandiéndolo para formar un haz paralelo de mayor diámetro. Esta configuración es efectiva para expandir haces, aunque no mantiene la configuración co-focal ideal.
+
+{\bf La figura (b)} ilustra el caso ideal donde la fuente láser se posiciona exactamente en el punto focal de la lente. Esta configuración aprovecha un principio fundamental de la óptica geométrica: cualquier rayo que emerge del punto focal de una lente, después de atravesarla, se propaga paralelo al eje óptico principal. Como resultado, todos los rayos divergentes que salen de la fuente puntual en el foco se transforman en un haz perfectamente colimado y paralelo. Este es el método más eficiente para obtener un haz plano uniforme a partir de una fuente que naturalmente diverge.
+
+{\bf En la figura (c)}, la situación se vuelve más interesante: la fuente láser se encuentra en el plano focal de la lente, pero desplazada una distancia h del eje óptico principal. Aunque la fuente sigue estando en el plano focal, su posición fuera del eje hace que los rayos que emergen de ella mantengan una dirección específica después de ser colimados por la lente. El resultado es un haz paralelo perfectamente colimado, pero que se propaga en una dirección oblicua respecto al eje óptico, formando un ángulo ?. Esta configuración es muy útil cuando se necesita dirigir un haz paralelo hacia una dirección específica sin mover físicamente la lente.
+
+Un rayo láser es una onda plana con una pequeña sección transversal, normalmente de 1 mm. Para aumentar la sección transversal, el haz se dirige primero a través de la lente $L_1$, generalmente un objetivo de microscopio que es una lente de distancia focal $f_1$ muy corta. Se coloca una lente $L_2$ de mayor diámetro y mayor distancia focal $f_2$ como se muestra en la figura. En el punto focal de $L_1$ se coloca una pequeña abertura (un agujero de alfiler) de un diámetro típico de 10 $\mu m$. De esa manera, se bloquea la luz que no cae en el punto focal. Esta luz perdida se debe al polvo y las impurezas atravesadas por el rayo láser en su camino a través de otros elementos ópticos (como espejos, divisores de rayo, etc.) y hace que el rayo no sea una onda plana perfecta.
+
+\begin{figure}[h!]
+\centering
+\includegraphics[scale=0.8]{fig1-14.png}
+\caption{Una configuración de onda plana}\label{fig1-14}
+\end{figure}
+
+Cuando hablamos del ``diámetro'' de una lente en sistemas ópticos, nos referimos específicamente al tamaño físico de la lente ya cortada y montada, no al radio de curvatura de las superficies esféricas que la componen. Este es simplemente el diámetro del borde circular de la lente que podemos medir directamente con una regla o calibrador.
+
+Para ilustrar esto con un ejemplo práctico, consideremos el diseño de un \hlp{expansor de haz láser}. Supongamos que tenemos un haz láser inicial con un diámetro de 1 mm y deseamos expandirlo 10 veces, obteniendo un haz final de 10 mm de diámetro.
+
+En este sistema, la primera lente $L_1$ será típicamente un objetivo de microscopio con una distancia focal muy corta de $f_1 = 4$ mm y un diámetro físico pequeño de aproximadamente 8 mm, que es característico de este tipo de objetivos. Su función principal es enfocar el haz incidente de 1 mm hacia el punto focal común del sistema.
+
+La segunda lente $L_2$, por el contrario, debe ser una lente colectora con una distancia focal mayor de $f_2 = 40$ mm para lograr la expansión deseada de 10$\times$, y un diámetro físico considerablemente mayor de 25 mm. Este mayor tamaño es crucial porque debe capturar completamente el cono de luz divergente que emerge del \hlb{punto focal común}.
+
+Los cálculos del sistema son directos: el factor de expansión viene dado por la relación $f_2/f_1 = 40/4 = 10\times$, mientras que la \hly{separación co-focal entre las lentes} debe ser $d = f_1 + f_2 = 44$ mm. El diámetro final del haz expandido será entonces $D_{\text{final}} = D_{\text{inicial}} \times (f_2/f_1) = 1 \text{ mm} \times 10 = 10$ mm.
+
+Es importante entender por qué la lente $L_2$ requiere un diámetro físico mayor: debe interceptar completamente el cono de luz divergente que sale del punto focal común. Si $L_2$ fuera demasiado pequeña, ``cortaría'' parte del haz y se perdería luz, degradando la calidad del sistema. Como regla práctica en el diseño de estos sistemas, el diámetro de $L_2$ debe ser al menos 1.5 veces el diámetro del haz expandido final para evitar el viñeteado y asegurar una transmisión óptima de la luz.
+
+
+\section{Interferencia}
+
+\subsection{Introducción}
+
+El \hly{principio de superposición} de las ondas electromagnéticas implica que, por ejemplo, dos campos superpuestos $u_1$ y $u_2$ se suman para dar $u_1 + u_2$. Esta es la base de la interferencia. Debido a la respuesta lenta de los detectores prácticos, los fenómenos de interferencia también son una cuestión de promediar en el tiempo y el espacio. Por tanto, el concepto de coherencia está íntimamente relacionado con el de interferencia. En este capítulo investigaremos ambos temas. Se obtiene un alto grado de coherencia de los láseres, que por lo tanto se han utilizado ampliamente como fuentes de luz en interferometría. En los últimos años, la falta de coherencia se ha aprovechado en una técnica llamada interferometría de luz blanca o de baja coherencia, que investigaremos al final del capítulo.
+
+\subsection{Descripción General}
+
+La interferencia puede ocurrir cuando dos o más ondas se superponen en el espacio.
+Suponga que dos ondas descritas por
+
+\begin{subequations}
+\begin{equation}
+u_1 = U_1 e^{i\phi_1}
+\end{equation}
+
+y
+
+\begin{equation}
+u_2 = U_2 e^{i\phi_2}
+\end{equation}
+\end{subequations}
+
+La teoría de las ondas electromagnéticas nos dice que el campo resultante simplemente se convierte en la suma, a saber.
+
+\begin{equation}
+u = u_1 + u_2
+\end{equation}
+
+La cantidad observable es, sin embargo, la intensidad, que se convierte en
+
+\[I = \vert u \vert^2 = \vert  u_1 + u_2 \vert^2  = U_1^2 + U_2^2 + 2U_1U_2\, cos(\phi_1 - \phi_2)\]
+\begin{equation}\label{ec3-3}
+I = I_1 + I_2 + 2 \sqrt{I_1 I_2}\, cos\Delta \phi
+\end{equation}
+
+donde
+
+\begin{equation}
+\Delta \phi = \phi_1 - \phi_2
+\end{equation}
+
+Como puede verse, la intensidad resultante no se convierte simplemente en la suma de las intensidades $( = I_1 + I_2)$ de las dos ondas parciales. Se dice que las dos ondas interfieren y $2\sqrt{I_1I_2} \,cos\Delta \phi$ se denomina \hlp{término de interferencia}. También vemos que cuando
+
+\[\Delta \phi = (2n + 1)\pi, \hspace{1cm} para \hspace{1cm} n=0,1,2,\ldots\]
+
+$cos \Delta \phi = -1$ y $I$ alcanza su mínimo. Las dos ondas están en desfase, lo que significa que interfieren destructivamente.
+
+Cuándo
+
+\[\Delta \phi = 2n\pi \hspace{1cm} para \hspace{1cm} n = 0,1,2, \ldots\]
+
+$cos \Delta \phi = 1$ y la intensidad alcanza su máximo. Las dos ondas están en fase, lo que significa que interfieren constructivamente.
+
+Para dos ondas de igual intensidad, es decir, $I_1 = I_2 = I_0$, la ecuación \ref{ec3-3} se convierte en
+
+\begin{equation}
+I = 2I_0 [1 + cos \Delta \phi] = 4I_0 cos^2 \left({\Delta \phi \over 2}\right)
+\end{equation}
+
+donde la intensidad varía entre 0 y 4$I_0$.
+
+La energía no desaparece realmente, sino que se {\bf redistribuye}. En las zonas de interferencia destructiva hay intensidad cero, pero en las zonas de interferencia constructiva la intensidad es máxima (4 veces la intensidad original para dos ondas iguales).
+ver  \href{https://www.notion.so/ptica-I-17c91215dd68816f9522c49fe2e95bec?source=copy_link#17c91215dd6881cebae8c585a5131b54}{Mis notas Notion interferencia constructiva y destructiva} 
+
+\subsection{Coherencia}
+
+La detección de la luz (es decir, la medición de la intensidad) es un proceso de promedio en el espacio y el tiempo. Al desarrollar la Ecuación \ref{ec3-3} no hicimos un promedio porque asumimos tácitamente que la diferencia de fase $\Delta \phi$ es constante en el tiempo. Eso significa que asumimos que $u_1$ y $u_2$ tienen la misma frecuencia única. Idealmente, una onda de luz con una sola frecuencia debe tener una longitud infinita. Matemáticamente, incluso una onda sinusoidal pura de longitud finita tendrá una distribución de frecuencias de acuerdo con el teorema de Fourier (consulte el Apéndice B). Por lo tanto, no existen fuentes que emitan luz de una sola frecuencia.
+
+Una forma de ilustrar la luz emitida por fuentes reales es representarla como trenes de ondas sinusoidales de longitud finita con diferencias de fase distribuidas aleatoriamente entre los trenes individuales.
+
+Supongamos que aplicamos una fuente de este tipo en un experimento de interferencia, p. el interferómetro de Michelson descrito en la Sección 3.6.2. Aquí, la luz se divide en dos ondas parciales de amplitudes iguales mediante un divisor de haz, después de lo cual las dos ondas se recombinan para interferir después de haber recorrido caminos diferentes.
+
+En la Figura \ref{fig3-1} hemos esbozado dos trenes de ondas sucesivos de las ondas parciales. Los dos trenes de ondas tienen la misma amplitud y longitud $L_c$, con una diferencia de fase abrupta y arbitraria. La figura \ref{fig3-1}(a) muestra la situación cuando las dos ondas parciales han recorrido trayectorias de igual longitud. Vemos que aunque la fase de la onda original fluctúa aleatoriamente, la diferencia de fase entre las ondas parciales 1 y 2 permanece constante en el tiempo. Por lo tanto, la intensidad resultante viene dada por la Ecuación \ref{ec3-3}. La Figura \ref{fig3-1}(c) muestra la situación cuando la onda parcial 2 ha recorrido una longitud de trayectoria $L_c$ más larga que la onda parcial 1. La cabeza de los trenes de ondas en la onda parcial 2 luego coincide con la cola de los trenes de ondas correspondientes en la onda parcial 1. la intensidad instantánea resultante sigue estando dada por la Ecuación \ref{ec3-3}, pero ahora la diferencia de fase fluctúa aleatoriamente a medida que pasan los sucesivos trenes de ondas. Como resultado, el $cos \Delta\phi$ varía aleatoriamente entre $+1$ y $-1$. Cuando se promedia sobre muchos trenes de ondas, el $cos \Delta\phi$ se convierte en cero y la intensidad observable resultante será
+
+\begin{figure}[h!]
+\centering
+\includegraphics[scale=0.8]{fig3-1.png}
+\caption{}\label{fig3-1}
+\end{figure}
+
+\begin{equation}
+I = I_1 + I_2
+\end{equation}
+
+La figura \ref{fig3-1}(b) muestra un caso intermedio en el que la onda parcial 2 ha recorrido una trayectoria $l$ más larga que la onda parcial 1, donde $0<l<L_c$. Promediada sobre muchos trenes de ondas, la diferencia de fase ahora varía aleatoriamente en un período de tiempo proporcional a $\tau = l/c$ y permanece constante en un período de tiempo proporcional a $\tau_c -\tau$ donde $\tau_c = L_c/c$. El resultado es que todavía podemos observar un patrón de interferencia según la Ecuación \ref{ec3-3}, pero con un contraste reducido. Para tener en cuenta esta pérdida de contraste, la ecuación \ref{ec3-3} se puede escribir como
+
+\begin{equation}\label{ec3-7}
+I = I_1 + I_2 + 2\sqrt{I_1I_2}\, \vert \gamma(\tau) \vert \, cos\Delta\phi
+\end{equation}
+
+donde $\vert \gamma(\tau) \vert$ es el valor absoluto de $\gamma(\tau)$.
+
+Para ver claramente que esta cantidad está relacionada con el contraste del patrón, introducimos la definición de \hly{\textbf{contraste} o \textbf{visibilidad}}.
+
+
+\begin{equation}\label{ec3-8}
+V = {I_{max} - I_{min} \over I_{max} + I_{min}}
+\end{equation}
+
+donde $I_{max}$ e $i_{min}$ son dos máximos y mínimos vecinos del patrón de interferencia descrito por la Ecuación \ref{ec3-7}. Como $cos \Delta \phi$ varía entre $+1$ y $-1$ tenemos
+
+\begin{subequations}
+\begin{equation}
+I_{max} = I_1 + I_2 + 2\sqrt{I_1 I_2} \, \vert \gamma(\tau) \vert
+\end{equation}
+\begin{equation}
+I_{min} = I_1 + I_2 - 2\sqrt{I_1 I_2} \, \vert \gamma(\tau) \vert
+\end{equation}
+\end{subequations}
+
+que, puesto en la Ecuación \ref{ec3-8}, da
+
+\begin{equation}\label{ec3-10}
+V = {2\sqrt{I_1I_2}\, \vert \gamma(\tau) \vert \over I_1 + I_2}
+\end{equation}
+
+Para dos ondas de igual intensidad, $I_1 = I_2$, y la Ecuación \ref{ec3-10} se convierte en
+
+\begin{equation}
+V = \vert \gamma(\tau) \vert
+\end{equation}
+
+lo que muestra que en este caso $ \vert \gamma(\tau) \vert$ es exactamente igual a la visibilidad. \hlp{$\gamma(\tau)$} se denomina el {\bf grado complejo de coherencia} y \hlp{es una medida de la capacidad de los dos campos de ondas para interferir}. De las discusiones anteriores debemos tener
+
+\begin{subequations}\label{ec3-12}
+\begin{equation}
+\vert \gamma(0) \vert = 1
+\end{equation}
+\begin{equation}
+\vert \gamma(\tau_c) \vert = 0
+\end{equation}
+\begin{equation}
+0 \leq \vert \gamma(\tau) \vert \leq 1
+\end{equation}
+\end{subequations}
+
+donde las ecuaciones (\ref{ec3-12} a) y (\ref{ec3-12} b) representan los dos casos límite de coherencia completa e incoherencia respectivamente, mientras que la desigualdad (\ref{ec3-12} c) representa la coherencia parcial.
+
+De mayor interés es conocer el valor de $\tau_c$, es decir, en qué longitud de trayectoria la diferencia $\vert \gamma(\tau) \vert = 0$. En la Sección 5.4.9 encontramos que en el caso de un láser de dos frecuencias esto sucede cuando
+
+\begin{equation}\label{ec3-13}
+\tau = \tau_c = {L_c \over c} = {1\over \Delta \nu}
+\end{equation}
+
+donde $\Delta \nu$ es la diferencia entre las dos frecuencias. Se puede demostrar que esta relación se aplica a cualquier fuente de luz con una distribución de frecuencias de ancho $\Delta \nu$.  $L_c$ se denomina longitud de coherencia y $\tau_c$ tiempo de coherencia.
+
+Vemos que la Ecuación \ref{ec3-13} está de acuerdo con nuestra discusión anterior donde argumentamos que las fuentes de ancho espectral finito emitirán trenes de ondas de longitud finita. Esto se verifica por la relación
+
+\begin{equation}
+\Delta \nu  ={\Delta \lambda_c \over \lambda^2}
+\end{equation}
+
+que puede derivarse de la ecuación \ref{ec1-2}.
+
+Como se indicó en la Sección 1.2, el espectro visible varía de 4,3 a 7,5 $\times 10^{14}$ Hz, lo que da un ancho espectral aproximadamente igual a $\Delta \nu  = 3 \times 10^{14}$ Hz. A partir de la ecuación \ref{ec3-13}, el tiempo de coherencia de la luz blanca es, por lo tanto, de aproximadamente 3 $\times 10^{15}$ s, lo que corresponde a una longitud de coherencia de aproximadamente 1 $\mu m$. Por lo tanto, en la interferometría de luz blanca es difícil observar más de dos o tres franjas de interferencia. Esta condición se puede mejorar aplicando filtros de color a costa de disminuir la intensidad.
+
+Las lámparas de descarga ordinarias tienen anchos espectrales correspondientes a longitudes de coherencia del orden de 1 $\mu m$, mientras que las líneas espectrales emitidas por lámparas de isótopos de baja presión tienen longitudes de coherencia de varios milímetros.
+
+Con mucho, la fuente de luz más coherente es el láser. Un láser de frecuencia única puede tener longitudes de coherencia de varios cientos de metros. Esto se analizará con más detalle en la Sección 5.4.9.
+
+Hasta ahora hemos estado discutiendo la coherencia entre dos campos de ondas en un punto del espacio. Este fenómeno se denomina coherencia temporal o longitudinal. También es posible medir la coherencia de un campo de ondas en dos puntos del espacio. Este fenómeno se denomina coherencia espacial o transversal y puede analizarse mediante el experimento clásico de doble rendija (o agujero de alfiler) de Young (consulte la Sección 3.6.1). Aquí se analiza el campo de ondas en dos puntos $P_1$ y $P_2$ pasando la luz a través de dos pequeños agujeros en una pantalla $S_1$ en $P_1$ y $P_2$ y observando el patrón de interferencia resultante en una pantalla $S_2$ (vea la figura \ref{fig3-13}(a)). De la misma manera que el grado de coherencia temporal $\gamma (\tau)$ es una medida del contraste de franjas en función de la diferencia de tiempo $\tau$, el grado de coherencia espacial $\gamma_{12}$ es una medida del contraste de franjas del patrón en la pantalla $S_2$ como una función de la diferencia espacial $D$ entre $P_1$ y $P_2$. Tenga en cuenta que dado que $\gamma_{12}$ es el grado espacial de coherencia para $\tau = 0$, es el contraste de la franja central en $S_2$ lo que debe medirse.
+
+Para medir la coherencia espacial de la propia fuente, la pantalla $S_1$ debe ponerse en contacto con la fuente. Inmediatamente queda claro que para una fuente de luz térmica extendida, $\vert \gamma_{12} = 0 \vert$ a menos que $P_1 = P_2$, lo que da  $\vert \gamma_{11} = 1 \vert$. Por otro lado, si alejamos S1 de esta fuente, observamos que  $\vert \gamma_{12} \vert$ puede ser diferente de cero, lo que muestra que un campo de ondas aumenta su coherencia espacial por mera propagación. También observamos que  $\vert \gamma_{12} \vert$ aumenta deteniendo la fuente por, por ejemplo, una apertura hasta  $\vert \gamma_{12} = 1 \vert$ para una abertura estenopeica. La distancia $D_c$ entre $P_1$ y $P_2$ para la cual  $\vert \gamma_{12} = 0 \vert$ se denomina longitud de coherencia espacial. Puede demostrarse que $D_c$ es inversamente proporcional al diámetro de la apertura en analogía con la longitud de coherencia temporal, que es inversamente proporcional al ancho espectral. Además, se puede demostrar que  $\vert \gamma_{12} \vert$ es la transformada de Fourier de la distribución de intensidad de la fuente y que  $\vert \gamma (\tau) \vert$ es la transformada de Fourier de la distribución espectral de la fuente (ver Sección 3.7).
+
+Un experimentador que utilice técnicas como la holografía, el muaré, el moteado y la fotoelasticidad no necesita preocuparse mucho por los detalles de la teoría de la coherencia. Tanto en la teoría como en los experimentos, se suele suponer que el grado de coherencia es uno o cero. 
+Sin embargo, uno debe estar familiarizado con hechos fundamentales tales como:
+
+\begin{enumerate}
+\item La luz de dos fuentes separadas no interfiere.
+\item La coherencia espacial y temporal de la luz de una fuente térmica extendida se incrementa al detenerla y al usar un filtro de color, respectivamente.
+\item La función de visibilidad de un láser multimodo exhibe máximos en un múltiplo integral del doble de la longitud de la cavidad (consulte la Sección 5.4.9).
+
+\end{enumerate}
+
+\subsection{Interferencia entre dos Ondas Planas}
+
+La figura \ref{fig3-2}(a) muestra dos ondas planas $u_1$, $u_2$ con direcciones de propagación $\mathbf{n_1}$, $\mathbf{n_2}$ que se encuentran en el plano $xz$ formando los ángulos $\theta_1$ y $\theta_2$ con el eje $z$. Introducimos las siguientes cantidades (ver Figura \ref{fig3-2}(b)): $\alpha = $ el ángulo entre ${\bf n_1}$ y ${\bf n_2}$, $\theta =$ el ángulo entre la línea que biseca $\alpha$ y el eje $z$. La amplitud compleja de las dos ondas planas se vuelve entonces (ver Ecuación (\ref{ec1-9} a))
+
+\begin{equation}
+u_1 = U_1\, e^{i\phi_1}
+\end{equation}
+\begin{equation}
+u_2 = U_2\, e^{i\phi_2}
+\end{equation}
+
+
+\begin{figure}[h!]
+\centering
+\includegraphics[scale=0.8]{fig3-2.png}
+\caption{}\label{fig3-2}
+\end{figure}
+
+\begin{equation}
+\phi_1 = k \left[ x \sin\left( \theta - \frac{\alpha}{2} \right) + z \cos\left( \theta - \frac{\alpha}{2} \right) \right]
+\end{equation}
+
+\begin{equation}
+\phi_2 = k \left[ x \sin\left( \theta + \frac{\alpha}{2} \right) + z \cos\left( \theta + \frac{\alpha}{2} \right) \right]
+\end{equation}
+
+\hrule
+
+La intensidad se da mediante la expresión general de la ecuación (3.3) insertando
+
+\textbf{Paso 1: Diferencia de fase inicial}
+$$\Delta \phi = \phi_1 - \phi_2 = k \left\{ x \left[ \sin\left( \theta - \frac{\alpha}{2} \right) - \sin\left( \theta + \frac{\alpha}{2} \right) \right] + z \left[ \cos\left( \theta - \frac{\alpha}{2} \right) - \cos\left( \theta + \frac{\alpha}{2} \right) \right] \right\}$$
+
+\textbf{Paso 2: Aplicando identidades trigonométricas}
+
+Para simplificar, usamos las identidades:
+\[\sin(A) - \sin(B) = 2\cos\left(\frac{A+B}{2}\right)\sin\left(\frac{A-B}{2}\right)\]
+\[\cos(A) - \cos(B) = -2\sin\left(\frac{A+B}{2}\right)\sin\left(\frac{A-B}{2}\right)\]
+
+Para el término en x:
+\[\sin\left( \theta - \frac{\alpha}{2} \right) - \sin\left( \theta + \frac{\alpha}{2} \right)\]
+
+Con $A = \theta - \frac{\alpha}{2}$ y $B = \theta + \frac{\alpha}{2}$:
+\[\frac{A+B}{2} = \theta\]
+\[\frac{A-B}{2} = -\frac{\alpha}{2}\]
+
+Por tanto:
+$$\sin\left( \theta - \frac{\alpha}{2} \right) - \sin\left( \theta + \frac{\alpha}{2} \right) = 2\cos(\theta)\sin\left(-\frac{\alpha}{2}\right) = -2\cos(\theta)\sin\left(\frac{\alpha}{2}\right)$$
+
+Para el término en z:
+$$\cos\left( \theta - \frac{\alpha}{2} \right) - \cos\left( \theta + \frac{\alpha}{2} \right)$$
+
+Aplicando la identidad:
+$$\cos\left( \theta - \frac{\alpha}{2} \right) - \cos\left( \theta + \frac{\alpha}{2} \right) = -2\sin(\theta)\sin\left(-\frac{\alpha}{2}\right) = 2\sin(\theta)\sin\left(\frac{\alpha}{2}\right)$$
+
+\textbf{Paso 3: Sustituyendo en la expresión original}
+$$\Delta \phi = k \left\{ x \left[ -2\cos(\theta)\sin\left(\frac{\alpha}{2}\right) \right] + z \left[ 2\sin(\theta)\sin\left(\frac{\alpha}{2}\right) \right] \right\}$$
+
+\begin{equation}\label{ec3-19}
+\Delta \phi = 2k \sin\left(\frac{\alpha}{2}\right) \left\{ -x \cos(\theta) + z \sin(\theta) \right\}
+\end{equation}
+
+
+\textbf{Paso 4: Verificando el término de interferencia}
+
+Si $k = \frac{2\pi}{\lambda}$ y definimos $d = \frac{\lambda}{2\sin(\alpha/2)}$, entonces:
+
+$$\frac{2\pi}{d} = \frac{2\pi}{\frac{\lambda}{2\sin(\alpha/2)}} = \frac{4\pi\sin(\alpha/2)}{\lambda} = 2k\sin\left(\frac{\alpha}{2}\right)$$
+
+Por lo tanto:
+
+$$\Delta \phi = \frac{2\pi}{d} \left\{ -x \cos(\theta) + z \sin(\theta) \right\}$$
+
+Y el término de interferencia es:
+\begin{equation}\label{ec3-20}
+\cos(\Delta \phi) = \cos\left[\frac{2\pi}{d}(z \sin(\theta) - x \cos(\theta))\right]
+\end{equation}
+
+
+\textbf{Paso 5: Interpretación como onda plana}
+
+La expresión $\cos\left[\frac{2\pi}{d}(z \sin(\theta) - x \cos(\theta))\right]$ efectivamente representa una onda plana que se propaga en el plano $xz$ con:
+
+\begin{itemize}
+\item Dirección de propagación: formando ángulo $\theta$ con el eje x
+\item "Longitud de onda" del patrón: $d = \frac{\lambda}{2\sin(\alpha/2)}$
+\end{itemize}
+
+\begin{figure}[h!]
+\centering
+\includegraphics[scale=0.5]{fig3-3.png}
+\caption{}\label{fig3-3}
+\end{figure}
+
+\textbf{Conclusión:}
+
+El desarrollo paso a paso es riguroso y la interpretación física como onda plana es apropiada. El parámetro $d$ representa la periodicidad espacial del patrón de interferencia, que es mayor que la longitud de onda original $\lambda$ de la luz.
+
+\hrule
+
+Comparando esta expresión con la parte real de la ecuación (1.9a), vemos que la ecuación \ref{ec3-20} puede considerarse como la representación de una onda plana con su dirección de propagación en el plano $xz$ formando un ángulo $\theta$ con el eje x como se muestra en la figura \ref{fig3-3}, y con una longitud de onda igual a
+
+\begin{equation}\label{ec3-21}
+d = \frac{\lambda}{2\sin(\alpha/2)}
+\end{equation}
+
+Esto también se observa claramente en la Figura \ref{fig3-2}. De la Ecuación \ref{ec3-21} se desprende que la distancia entre las franjas de interferencia (longitud de onda $d$) depende únicamente del ángulo entre $\mathbf{n_1}$ y $\mathbf{n_2}$. Al comparar las Figuras \ref{fig3-2} y \ref{fig3-4}, se observa cómo $d$ disminuye a medida que $\alpha$ aumenta. El diagrama de la Figura \ref{fig3-5} muestra la relación entre $d$ y $\alpha$, y $f = 1/d$ y $\alpha$ según la Ecuación (\ref{ec3-21}). Aquí se ha establecido $\lambda = 632.8  nm$, la longitud de onda del láser de He-Ne.
+
+La distribución de intensidad en el plano xy se obtiene introduciendo $z = 0$ en la ecuación (\ref{ec3-19}):
+
+
+
+\begin{figure}[h!]
+\centering
+\includegraphics[scale=0.6]{fig3-4.png}
+\caption{}\label{fig3-4}
+\end{figure}
+
+\begin{figure}[h!]
+\centering
+\includegraphics[scale=0.6]{fig3-5.png}
+\caption{}\label{fig3-5}
+\end{figure}
+
+\end{document}
